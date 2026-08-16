@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: tt-detector
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python backend/app.py
+    envVars:
+      # Значение задаётся в панели Render вручную и в репозиторий не попадает.
+      - key: GIGACHAT_CREDENTIALS
+        sync: false
+      - key: GIGACHAT_SCOPE
+        value: GIGACHAT_API_PERS
+      - key: PYTHON_VERSION
+        value: "3.12"
